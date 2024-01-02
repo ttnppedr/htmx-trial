@@ -55,21 +55,17 @@ app.get('/get-temperature', (req, res) => {
     res.send(currentTempurature.toFixed(1) + '°C');
 });
 
-const contacts = [
-    { name: 'John Doe', email: 'john@example.com' },
-    { name: 'Jane Doe', email: 'jane@example.com' },
-    { name: 'Alice Smith', email: 'alice@example.com' },
-    { name: 'Bob Willimas', email: 'bob@example.com' },
-    { name: 'Mary Harris', email: 'many@example.com' },
-    { name: 'David Mitchell', email: 'david@example.com' },
-];
-
-app.post('/search', (req, res) => {
+app.post('/search/api', async (req, res) => {
     const searchTerm = req.body.search.toLowerCase();
 
     if (!searchTerm) {
         return res.send('<tr></tr>');
     }
+
+    const response = await fetch(
+        `https://jsonplaceholder.typicode.com/users`
+    );
+    const contacts = await response.json();
 
     const searchResults = contacts.filter((contact) => {
         const name = contact.name.toLowerCase();
