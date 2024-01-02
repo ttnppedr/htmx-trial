@@ -38,6 +38,16 @@ app.post('/convert', (req, res) => {
     }, 2000);
 });
 
+let counter = 0;
+
+app.get('/poll', (req, res) => {
+    counter++;
+
+    const data = { value: counter };
+
+    res.json(data);
+});
+
 app.listen(3000, () => {
     console.log(`Server is running on port 3000`);
 });
