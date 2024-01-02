@@ -55,6 +55,42 @@ app.get('/get-temperature', (req, res) => {
     res.send(currentTempurature.toFixed(1) + '°C');
 });
 
+const contacts = [
+    { name: 'John Doe', email: 'john@example.com' },
+    { name: 'Jane Doe', email: 'jane@example.com' },
+    { name: 'Alice Smith', email: 'alice@example.com' },
+    { name: 'Bob Willimas', email: 'bob@example.com' },
+    { name: 'Mary Harris', email: 'many@example.com' },
+    { name: 'David Mitchell', email: 'david@example.com' },
+];
+
+app.post('/search', (req, res) => {
+    const searchTerm = req.body.search.toLowerCase();
+
+    if (!searchTerm) {
+        return res.send('<tr></tr>');
+    }
+
+    const searchResults = contacts.filter((contact) => {
+        const name = contact.name.toLowerCase();
+        const email = contact.email.toLowerCase();
+
+        return name.includes(searchTerm) || email.includes(searchTerm);
+    })
+
+    setTimeout(() => {
+        const searchResultsHTML = searchResults.map(
+            (contact) => `
+                <tr>
+                    <td><div class="my-4 p-2">${contact.name}</div></td>
+                    <td><div class="my-4 p-2">${contact.email}</div></td>
+                </tr>
+            `).join('');
+
+        res.send(searchResultsHTML);
+    }, 1000);
+});
+
 app.listen(3000, () => {
     console.log(`Server is running on port 3000`);
 });
