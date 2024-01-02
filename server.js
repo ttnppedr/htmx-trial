@@ -48,6 +48,13 @@ app.get('/poll', (req, res) => {
     res.json(data);
 });
 
+let currentTempurature = 20;
+
+app.get('/get-temperature', (req, res) => {
+    currentTempurature += Math.random() * 2 - 1;
+    res.send(currentTempurature.toFixed(1) + '°C');
+});
+
 app.listen(3000, () => {
     console.log(`Server is running on port 3000`);
 });

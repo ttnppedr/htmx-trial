@@ -11,9 +11,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>HTML Crash Course</title>
   </head>
-  <body>
+  <body
+    class="bg-blue-900 text-white min-h-screen flex items-center justify-center"
+  >
     <div class="text-center">
-      <span hx-get="/poll" hx-trigger="every 2s"> Loading... </span>
+      <h1 class="text-xl mb-4">Weather In New York</h1>
+      <p class="text-5xl">
+        <span hx-get="/get-temperature" hx-trigger="every 2s">
+          Loading...
+        </span>
+      </p>
     </div>
   </body>
 </html>
