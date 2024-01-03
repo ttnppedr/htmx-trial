@@ -43,9 +43,7 @@ let counter = 0;
 app.get('/poll', (req, res) => {
     counter++;
 
-    const data = { value: counter };
-
-    res.json(data);
+    res.send('' + counter);
 });
 
 let currentTempurature = 20;
