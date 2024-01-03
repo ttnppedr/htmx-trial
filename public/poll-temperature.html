@@ -11,24 +11,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>HTML Crash Course</title>
   </head>
-  <body>
+  <body class="bg-blue-900 text-white min-h-screen flex items-center justify-center">
     <div class="text-center">
-      <h1 class="text-2xl font-bold my-5">Simple Request Example</h1>
-      <button
-        hx-get="/users"
-        hx-target="#users"
-        hx-indicator="#loading"
-        hx-vals='{"limit": 5}'
-        class="bg-blue-500 text-white py-2 px-3 my-5 rounded-lg"
-      >
-        Fetch Users
-      </button>
-
-      <span class="htmx-indicator" id="loading">
-        <img src="img/loader.gif" alt="Loading..." class="m-auto h-10" />
-      </span>
-
-      <div id="users"></div>
+      <h1 class="text-xl mb-4">Weather In New York</h1>
+      <p class="text-5xl">
+        <span hx-get="/get-temperature" hx-trigger="every 1s">
+          Loading...
+        </span>
+      </p>
     </div>
   </body>
 </html>
